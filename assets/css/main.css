@@ -85,7 +85,7 @@
 		-webkit-transition: border-color 0.2s ease-in-out;
 		-ms-transition: border-color 0.2s ease-in-out;
 		transition: border-color 0.2s ease-in-out;
-		border-bottom: dotted 1px;
+		border-bottom: dotted 0px;
 		color: inherit;
 		outline: 0;
 		text-decoration: none;
@@ -187,7 +187,7 @@
 		transform: translate3d(0,0,0);
 	/* Set your background with this */
 
-		background: #348cb2 url("images/bg.jpg") bottom left;
+		background: #348cb2 url("images/bg.jpg") center center;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
