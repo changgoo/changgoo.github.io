@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>Athena-TIGRESS wiki</title>
+<title> What is TIGRESS?</title>
 <xmp theme="cyborg" style="display:none;">
 
-***
-
-## What is TIGRESS?
-
-***
-
-**TIGRESS** is a numerical framework to simulate the **T**hree-phase **I**SM in **G**alaxies **R**esolving **E**volution with **S**tar formation and **S**upernova feedback. 
+### **TIGRESS** is a numerical framework to simulate the **T**hree-phase **I**SM in **G**alaxies **R**esolving **E**volution with **S**tar formation and **S**upernova feedback. 
 
 [The TIGRESS code](https://github.com/PrincetonUniversity/Athena-TIGRESS/) is built on the [Athena MHD code](https://github.com/PrincetonUniversity/Athena-Cversion) package with additional physical modules including
 
@@ -41,142 +35,8 @@ TIGRESS utilizes Athena's additional features including
 See the [TIGRESS method paper](http://adsabs.harvard.edu/abs/2017ApJ...846..133K) (Kim & Ostriker 2017) for details.
 
 ***
-
-## Anaylsis Guide
-
+&copy; 2017 [Chang-Goo Kim](http://changgoo.github.io/index.html) and [Eve C. Ostriker](https://web.astro.princeton.edu/people/eve-ostriker)
 ***
-
-### Python Installation
-
-If you are new to `python`, consider installing `python2.7` using the [conda](https://www.anaconda.com) package. I recommend you to start with [miniconda](https://conda.io/miniconda.html). Following commands will enable you to install basic python packages.
-
-    > wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-    > bash Miniconda2-latest-Linux-x86_64.sh
-
-> **Princeton Specific**: If you are using _tigressdata_, consider installing python under `/tigress/username/`. (your home directory quota is small!)
-
-### Dependency
-
-This module depends on 
-
-* `matplotlib`
-* `numpy`
-* [`pandas`](http://pandas.pydata.org)
-* [`astropy`](http://www.astropy.org)
-* [`yt`](http://yt-project.org) (only for `yt_analysis` module; to be integrated)
-* [`healpy`](http://healpy.readthedocs.io/en/latest/install.html) (only for `synthetic_observation` module)
-
-Recommended setup can be done by calling:
-
-    > conda config --add channels conda-forge
-    > conda install matplotlib numpy astropy pandas yt healpy
-
-Also, `jupyter notebook` is a recommended tool for running python codes (see [[Notebooks]]). `conda` installs it easily
-
-    > conda install jupyter
-
-### Python modules
-
-Basic python modules for TIGRESS simulations can be found under `python/pyathena`. More extended modules can be found from [the github repo](https://github.com/changgoo/pyathena).
-
-***
-
-### Notebooks
-
-Example notebooks are located at `python/notebook`.
-
-* [history_analysis.ipynb](https://github.com/PrincetonUniversity/Athena-TIGRESS/blob/master/python/notebook/history_analysis.ipynb)
-
->**We consider the original notebooks templates.** So, we _highly_ recommend making copies of them for your own tests and future analysis. **Do not** commit changes to the notebook. If you find bugs, please let Chang-Goo  (cgkim@astro.princeton.edu) know. If you create a notebook useful for general purposes, please also let us know. 
-
-When you run notebooks from another directory, you may need to set up the path to `pyathena` appropriately. There are three (maybe more) ways to set things up:
-
-* Adding the path to PYTHONPATH in your `.bashrc` file:
-
-      export PYTHONPATH="/your-path-to-Athena-TIGRESS/python"
-
-* Adding the path using `sys` module (in the beginning of notebooks):
-
-      import sys
-      sys.path.insert(0,"/your-path-to-Athena-TIGRESS/python")
-
-* Using a startup file located at `~/.ipython/profile_default/startup/`. An example startup can be found in [my repo](https://github.com/changgoo/pyathena/blob/master/00-mystartup.py).
-
-### Installing jupyter
-
-You may look at the official [documentation](http://jupyter-notebook.readthedocs.io/en/stable/notebook.html), or simply type
-
-    > conda install jupyter
-
-
-### SSH tunneling (port fowarding)
-
-Often you will want to analyze data that is on a remote machine (server) where the simulation was run, without moving data to a local machine.  To do this, you can run `jupyter` on the remote machine while piping the notebook output to your local machine.  The pyathena modules as well as the notebook you want to run must be on the server.
-
-* First, connect to the server and run `jupyter notebook` (you may want to run this using `screen`)
-
-      > ssh username@servername
-      > jupyter notebook --no-browser --port=hostport
-
-  For example:
-
-      > ssh username@tigressdata.princeton.edu
-      > jupyter notebook --no-browser --port=8100
-
-* Second, set up your browser on your local machine to listen to output from the remote machine.  In the browser search window (e.g., Firefox, Chrome, Safari), type:
-  ```
-  localhost:localport
-  ```
-  For example
-  ```
-  localhost:8110
-  ```
-
-* Third, execute the following `ssh` command on **your local machine** to forward from `hostport` to your `localport`.  This tells the remote server that information output to `hostport` by processes (here, `jupyter`) should be piped by ssh to `localport` on your local machine.
-
-      > ssh -N -f -L localport:localhost:hostport username@servername
-
-  For example:
-
-      > ssh -N -f -L 8110:localhost:8100 username@tigressdata.princeton.edu
-
-> NOTE: You may need to install your own `python` package (using `conda`; see above) in order to access `jupyter notebook` running on the PiCSiE machines with `ssh tunneling`.
- 
-### Configure `jupyter` for remote access
-
-There are several tweaks you may need to use `jupyter notebook`. You may want to look at the [jupyter document](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#working-remotely).
-
-Especially, you may wish to consult the section [Running a public notebook server](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#running-a-public-notebook-server). 
-
-***
-
-## MHD_4pc_new
-
-***
-
-### INITIAL CONDITIONS
-* Surface Density of Gas (M_sun/pc^2): 13.0
-* Surface Density of Stars (M_sun/pc^2): 42.0
-* Scale Hegihts of Stars (pc): 245.0
-* Midplane density of DM (M_sun/pc^3): 0.0064
-* Galactocentric Distance (pc): 8000.0
-* Galactic Rotation (km/s/pc): 0.028
-
-### DOMAIN
-* Lx: 1024.0 x 1024.0 x 7168.0
-* Nx: 256.0 x 256.0 x 1792.0
-* dx: 4.0 x 4.0 x 4.0
-
-### PERTURBATION
-* driving_time: 100.0
-* turb_driving: True
-* random_SN_driving: False
-
-### History
-* `/tigress/changgoo/MHD_4pc_new/hst/MHD_4pc_new.hst`
-
-![MHD_4pc_new history](http://tigress-web.princeton.edu/~changgoo/Athena-TIGRESS.wiki/MHD_4pc_new.png)
-
 </xmp>
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
