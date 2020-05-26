@@ -115,6 +115,10 @@
 			display: none;
 		}
 
+		.icon img{
+			vertical-align: middle;
+		}
+
 /* Wrapper */
 
 	@-moz-keyframes wrapper {
