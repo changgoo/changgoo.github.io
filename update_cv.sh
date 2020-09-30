@@ -3,8 +3,8 @@
 cd CV/
 
 # update bibliography
-python get_pub.py
-python pub2tex.py
+python get_pubs.py
+python pubs2tex.py
 
 # compile CV
 pdflatex CV.tex
