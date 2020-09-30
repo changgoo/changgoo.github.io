@@ -1,0 +1,13 @@
+sudo: false
+language: generic
+addons:
+    apt:
+        packages:
+            - texlive-latex-recommended
+            - texlive-latex-extra
+            - texlive-pdflatex
+            - latex-xcolor
+script:
+    - ./update_cv.sh
+
+after_success:
