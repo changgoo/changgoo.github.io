@@ -6,15 +6,12 @@ branches:
 addons:
     apt:
         packages:
-            - fonts-lmodern
+            - texlive-latex-base
             - texlive-latex-recommended
             - texlive-latex-extra
+            - texlive-generic-recommended
             - texlive-xetex
-            - texlive-fonts-recommended
-            - texlive-fonts-extra
             - texlive-publishers
-            - texlive-plain-generic
-            - latex-xcolor
 before_script:
     - pip install ads
 script:
