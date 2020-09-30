@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ -n "$GH_TOKEN" ]; then
     cd $TRAVIS_BUILD_DIR
-    git checkout master
+    git checkout --orphan master
     mkdir pdf/
     mv CV.pdf pdf/CV.pdf
     git add -f pdf/CV.pdf
