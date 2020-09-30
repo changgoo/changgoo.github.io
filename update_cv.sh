@@ -10,10 +10,12 @@ python pub2tex.py
 pdflatex CV.tex
 pdflatex CV.tex
 
+# move files
+cp CV.pdf ../
+
 # cleanup
 rm -rf *
 git checkout .
 
-# move files
+# change dir
 cd ../
-cp CV/CV.pdf .
