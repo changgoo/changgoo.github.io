@@ -13,6 +13,8 @@ addons:
             - texlive-fonts-recommended
             - texlive-fonts-extra
             - latex-xcolor
+before_script:
+    - pip install ads
 script:
     - ./update_cv.sh
 
