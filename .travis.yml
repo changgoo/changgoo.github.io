@@ -13,7 +13,7 @@ addons:
             - texlive-fonts-recommended
             - texlive-fonts-extra
             - texlive-publishers
-            - texlive-epsf
+            - texlive-plain-generic
             - latex-xcolor
 before_script:
     - pip install ads
