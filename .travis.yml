@@ -3,9 +3,12 @@ language: generic
 addons:
     apt:
         packages:
+            - fonts-lmodern
             - texlive-latex-recommended
             - texlive-latex-extra
-            - texlive-pdflatex
+            - texlive-xetex
+            - texlive-fonts-recommended
+            - texlive-fonts-extra
             - latex-xcolor
 script:
     - ./update_cv.sh
