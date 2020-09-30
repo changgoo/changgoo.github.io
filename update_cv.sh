@@ -7,8 +7,8 @@ python get_pubs.py
 python pubs2tex.py
 
 # compile CV
-pdflatex CV.tex
-pdflatex CV.tex
+xelatex CV.tex
+xelatex CV.tex
 
 # move files
 cp CV.pdf ../
