@@ -11,11 +11,11 @@ pdflatex CV.tex
 pdflatex CV.tex
 
 # move files
-cp CV.pdf ../
+#cp CV.pdf ../
 
 # cleanup
-rm -rf *
-git checkout .
+#rm -rf *
+#git checkout .
 
 # change dir
-cd ../
+#cd ../
