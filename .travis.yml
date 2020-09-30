@@ -12,6 +12,7 @@ addons:
             - texlive-xetex
             - texlive-fonts-recommended
             - texlive-fonts-extra
+            - texlive-publishers
             - latex-xcolor
 before_script:
     - pip install ads
