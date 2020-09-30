@@ -10,20 +10,13 @@ addons:
             - texlive-latex-recommended
             - texlive-latex-extra
             - texlive-generic-recommended
-            - texlive-xetex
+            - texlive-fonts-recommended
+            - texlive-fonts-extra
             - texlive-publishers
 before_script:
     - pip install ads
 script:
     - ./update_cv.sh
 
-after_success: |
-    if [ -n "$GH_TOKEN" ]; then
-        cd $TRAVIS_BUILD_DIR
-        git checkout master
-        mkdir pdf/
-        mv CV.pdf pdf/CV.pdf
-        git add -f pdf/CV.pdf
-        git -c user.name='travis' -c user.email='travis' commit -m "current pdf"
-        git push -q -f https://$GITHUB_USER:$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG master
-    fi
+after_success:
+    - ./deploy.sh

@@ -7,7 +7,8 @@ python get_pubs.py
 python pubs2tex.py
 
 # compile CV
-xelatex -interaction=nonstopmode CV.tex
+pdflatex -interaction=nonstopmode CV.tex
+pdflatex -interaction=nonstopmode CV.tex
 
 # move files
 cp CV.pdf ../
