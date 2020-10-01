@@ -24,5 +24,3 @@ deploy:
   keep_history: true
   local_dir: pdf/
   target_branch: master
-  on:
-    branch: master
