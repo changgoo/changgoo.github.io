@@ -10,12 +10,16 @@ python pubs2tex.py
 pdflatex -interaction=nonstopmode CV.tex
 pdflatex -interaction=nonstopmode CV.tex
 
-# move files
-cp CV.pdf ../
-
-# cleanup
-rm -rf *
-git checkout .
-
 # change dir
 cd ../
+
+# move files
+DIR=pdf
+
+if [ -d $DIR ] ; then
+    rm -rf $DIR/*
+else
+    mkdir -p $DIR
+fi
+
+cp CV/CV.pdf $DIR/

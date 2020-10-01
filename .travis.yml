@@ -17,6 +17,12 @@ before_script:
     - pip install ads
 script:
     - ./update_cv.sh
-
-after_success:
-    - ./deploy.sh
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: pdf/
+  target_branch: master
+  on:
+    branch: master
