@@ -7,7 +7,13 @@ FROM gitpod/workspace-full
 # More information: https://www.gitpod.io/docs/config-docker/
 # Install LaTeX
 RUN sudo apt-get -q update && \
-    sudo apt-get install -yq texlive-full && \
+    sudo apt-get install -yq texlive-latex-base \
+    texlive-latex-recommended \
+    texlive-latex-extra \
+    texlive-generic-recommended \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-publishers && \
     sudo rm -rf /var/lib/apt/lists/*
 
 # Install ads
