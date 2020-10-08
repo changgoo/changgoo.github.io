@@ -14,12 +14,6 @@ pdflatex -interaction=nonstopmode CV.tex
 cd ../
 
 # move files
-DIR=pdf
-
-if [ -d $DIR ] ; then
-    rm -rf $DIR/*
-else
-    mkdir -p $DIR
-fi
+DIR=html
 
 cp CV/CV.pdf $DIR/
