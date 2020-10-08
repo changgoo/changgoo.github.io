@@ -2,7 +2,7 @@ sudo: false
 language: generic
 branches:
     only:
-        - cv
+        - master
 addons:
     apt:
         packages:
@@ -24,3 +24,5 @@ deploy:
   keep_history: true
   local_dir: pdf/
   target_branch: master
+  on:
+      branch: master
