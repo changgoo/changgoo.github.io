@@ -6,23 +6,21 @@ branches:
 addons:
     apt:
         packages:
-            - fonts-lmodern
+            - texlive-latex-base
             - texlive-latex-recommended
             - texlive-latex-extra
-            - texlive-xetex
+            - texlive-generic-recommended
             - texlive-fonts-recommended
             - texlive-fonts-extra
-            - latex-xcolor
+            - texlive-publishers
+before_script:
+    - pip install ads
 script:
     - ./update_cv.sh
-
-after_success: |
-    if [ -n "$GH_TOKEN" ]; then
-        cd $TRAVIS_BUILD_DIR
-        git checkout master
-        mkdir pdf/
-        mv CV.pdf pdf/CV.pdf
-        git add -f pdf/CV.pdf
-        git -c user.name='travis' -c user.email='travis' commit -m "current pdf"
-        git push -q -f https://$GITHUB_USER:$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG master
-    fi
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: pdf/
+  target_branch: master
