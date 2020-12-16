@@ -9,6 +9,7 @@ students = [
     "vijayan",
     "woorak",
     "kado-fong",
+    "mao",
 ]
 
 _JOURNAL_MAP = {
@@ -145,7 +146,7 @@ def get_paper_items(papers):
         else:
             title = "\\textit{{{0}}}".format(utf8totex(paper["title"]))
         if '<SUB>' in title:
-            title=title.replace(' <SUB>','${}_{').replace('</SUB>','}$')
+            title=title.replace('<SUB>','${}_{').replace('</SUB>','}$')
             print(title)
         entry += ", " + title
 
@@ -213,11 +214,14 @@ if __name__ == '__main__':
     nfirst = sum(1 for p in papers if "Chang-Goo" in p["authors"][0])
     cites = sorted((p["citations"] for p in papers), reverse=True)
     ncitations = sum(cites)
-    hindex = sum(c >= i for i, c in enumerate(cites))
+    cites_first = sorted((p["citations"] for p in papers if "Chang-Goo" in p["authors"][0]), reverse=True)
+    ncitations_first = sum(cites_first)
+    hindex = sum(c > i for i, c in enumerate(cites))
+    hindex_first = sum(c > i for i, c in enumerate(cites_first))
 
-    summary = (("refereed: {1} --- first author: {2} --- citations: {3} --- "
-               "h-index: {4} (as of \\textit{{{0}}})")
-               .format(date.today(), nref, nfirst, ncitations, hindex))
+    summary = (("Metrics (as of \\textit{{{0}}}) --- refereed: {1} --- first author: {2} \\\\ "
+                "citations: {3} ({5} as the first author) --- h-index: {4} ({6} as the first author)")
+               .format(date.today(), nref, nfirst, ncitations, hindex, ncitations_first, hindex_first))
 
     print("-"*32)
     print("Summary:")
