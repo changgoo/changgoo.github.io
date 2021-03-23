@@ -270,7 +270,7 @@ if __name__ == '__main__':
     #                   ncitations, ncitations_first, ncitations_secthr,
     #                   hindex, hindex_first))
 
-    summary = (("Publication metrics (based on NASA ADS, as of textit{{{0}}}): \\\\ "
+    summary = (("Publication metrics (based on NASA ADS, as of \\textit{{{0}}}): \\\\ "
                 "refereed: {1} --- citations: {4} --- h-index: {7}")
                .format(date.today(), nref, nfirst, nsecthr,
                        ncitations, ncitations_first, ncitations_secthr,
