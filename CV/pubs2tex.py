@@ -131,6 +131,9 @@ def get_paper_items(papers):
     refereeds = []
     preprints = []
 
+    first_refs = []
+    secthr_refs = []
+    other_refs = []
     for paper in papers:
         authors = parse_authors(paper)
         entry = authors
@@ -186,6 +189,16 @@ def get_paper_items(papers):
 
         else:
             refereeds.append(entry)
+            myname = "Chang-Goo"
+            if myname in paper["authors"][0]:
+                first_refs.append(entry)
+            elif (len(paper["authors"]) > 1) and (myname in paper["authors"][1]):
+                    secthr_refs.append(entry)
+            #elif (len(paper["authors"]) > 2) and (myname in paper["authors"][2]):
+            #        secthr_refs.append(entry)
+            else:
+                other_refs.append(entry)
+
 
     # Now go through and add the \item and numbers:
     for corpus in [preprints, refereeds]:
@@ -194,7 +207,18 @@ def get_paper_items(papers):
             corpus[i] = ("\\item[{" + #\\color{deemph}\\scriptsize" +
                          str(num) + ".}]" + item)
 
-    return refereeds, preprints
+    nums = range(len(refereeds)+1)[::-1]
+    j=0
+    for corpus in [first_refs, secthr_refs, other_refs]:
+        for i, item in enumerate(corpus):
+            #num = len(corpus) - i
+            num = nums[j]
+            corpus[i] = ("\\item[{" + #\\color{deemph}\\scriptsize" +
+                         str(num) + ".}]" + item)
+            j+=1
+
+
+    return refereeds, preprints, first_refs, secthr_refs, other_refs
 
 
 if __name__ == '__main__':
@@ -207,31 +231,76 @@ if __name__ == '__main__':
         pubs = json.loads(f.read())
 
     papers = filter_papers(pubs)
-    refs, unrefs = get_paper_items(papers)
+    refs, unrefs, first_refs, secthr_refs, other_refs = get_paper_items(papers)
 
     # Compute citation stats
     nref = len(refs)
-    nfirst = sum(1 for p in papers if "Chang-Goo" in p["authors"][0])
     cites = sorted((p["citations"] for p in papers), reverse=True)
     ncitations = sum(cites)
-    cites_first = sorted((p["citations"] for p in papers if "Chang-Goo" in p["authors"][0]), reverse=True)
+
+    # Compute for specific conditions
+    myname = "Chang-Goo"
+    nfirst = 0
+    nsecthr = 0
+    cites_first = []
+    cites_secthr = []
+    for p in papers:
+        if myname in p["authors"][0]:
+            nfirst += 1
+            cites_first.append(p["citations"])
+        elif len(p["authors"]) > 1:
+            if (myname in p["authors"][1]):
+                nsecthr += 1
+                cites_secthr.append(p["citations"])
+        elif len(p["authors"]) > 2:
+            if myname in p["authors"][2]:
+                nsecthr += 1
+                cites_secthr.append(p["citations"])
+    cites_first = sorted(cites_first, reverse=True)
     ncitations_first = sum(cites_first)
+    cites_secthr = sorted(cites_secthr, reverse=True)
+    ncitations_secthr = sum(cites_secthr)
     hindex = sum(c > i for i, c in enumerate(cites))
     hindex_first = sum(c > i for i, c in enumerate(cites_first))
 
-    summary = (("Metrics (as of \\textit{{{0}}}) --- refereed: {1} --- first author: {2} \\\\ "
-                "citations: {3} ({5} as the first author) --- h-index: {4} ({6} as the first author)")
-               .format(date.today(), nref, nfirst, ncitations, hindex, ncitations_first, hindex_first))
+    #summary = (("Metrics (as of \\textit{{{0}}}) --- refereed: {1}"
+    #            " ({2} as the first/{3} as the second or third author) \\\\ "
+    #            "citations: {4} ({5}/{6}) --- h-index: {7} ({8})")
+    #           .format(date.today(), nref, nfirst, nsecthr,
+    #                   ncitations, ncitations_first, ncitations_secthr,
+    #                   hindex, hindex_first))
 
+    summary = (("Publication metrics (based on NASA ADS, as of textit{{{0}}}): \\\\ "
+                "refereed: {1} --- citations: {4} --- h-index: {7}")
+               .format(date.today(), nref, nfirst, nsecthr,
+                       ncitations, ncitations_first, ncitations_secthr,
+                       hindex, hindex_first))
+    summary_1st = ((" (first author papaers: {2} --- citations: {5} --- h-index: {8})")
+               .format(date.today(), nref, nfirst, nsecthr,
+                       ncitations, ncitations_first, ncitations_secthr,
+                       hindex, hindex_first))
     print("-"*32)
     print("Summary:")
     print(summary)
+    print(summary_1st)
 
     with open("summary.tex", "w") as f:
         f.write(summary)
 
+    with open("summary_1st.tex", "w") as f:
+        f.write(summary_1st)
+
     with open("pubs_ref.tex", "w") as f:
         f.write("\n\n".join(refs))
+
+    with open("pubs_ref_1st.tex", "w") as f:
+        f.write("\n\n".join(first_refs))
+
+    with open("pubs_ref_2nd.tex", "w") as f:
+        f.write("\n\n".join(secthr_refs))
+
+    with open("pubs_ref_co.tex", "w") as f:
+        f.write("\n\n".join(other_refs))
 
     with open("pubs_arxiv.tex", "w") as f:
         f.write("\n\n".join(unrefs))

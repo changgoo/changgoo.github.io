@@ -3,6 +3,8 @@
 \usepackage{wrapfig}
 \usepackage{hyperref} % Required for links
 \usepackage{enumitem}
+\usepackage{mathptmx}
+
 %-----------------------------------------------------------------------------
 %	Colors
 %
@@ -11,23 +13,21 @@
 
 \definecolor{deemph}{HTML}{666666} % light grey
 
+\renewcommand{\baselinestretch}{0.9} % double-spaced
+\setlength{\parskip}{0.0in}
 
-%\setlength{\parskip}{0.03in}
-
-\newcommand\itemtitle[1]{{\large \bf #1}\hrulefill\vspace{5pt}}
+\newcommand\itemtitle[1]{{\bf #1}\hrulefill\vspace{5pt}}
 \newcommand\subtitle[1]{{\bf #1}}
 \newcommand\elements[3]{
 \begin{minipage}[t]{0.15\textwidth}
 #1 \end{minipage}
 \begin{minipage}[t]{0.85\textwidth}
-\subtitle{#2}\\{#3} \end{minipage}}
+\subtitle{#2}\\{#3} \vspace{4pt}\end{minipage}}
 \newcommand\onelineelements[3]{
 \begin{minipage}[t]{0.15\textwidth}
 #1 \end{minipage}
 \begin{minipage}[t]{0.85\textwidth}
-\subtitle{#2}, {#3} \end{minipage}}
-
-\renewcommand{\baselinestretch}{1} % double-spaced
+\subtitle{#2}, {#3} \vspace{4pt}\end{minipage}}
 
 \fancypagestyle{CV}{
 \fancyhf{}
