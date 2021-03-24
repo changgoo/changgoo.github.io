@@ -201,7 +201,13 @@ def get_paper_items(papers):
 
 
     # Now go through and add the \item and numbers:
-    for corpus in [preprints, refereeds]:
+    for corpus in [preprints]:
+        for i, item in enumerate(corpus):
+            num = len(corpus) - i
+            corpus[i] = ("\\item " + item)
+
+
+    for corpus in [refereeds]:
         for i, item in enumerate(corpus):
             num = len(corpus) - i
             corpus[i] = ("\\item[{" + #\\color{deemph}\\scriptsize" +
