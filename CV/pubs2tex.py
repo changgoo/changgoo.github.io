@@ -275,7 +275,7 @@ if __name__ == '__main__':
                .format(date.today(), nref, nfirst, nsecthr,
                        ncitations, ncitations_first, ncitations_secthr,
                        hindex, hindex_first))
-    summary_1st = ((" (first author papaers: {2} --- citations: {5} --- h-index: {8})")
+    summary_1st = ((" (first author papers: {2} --- citations: {5} --- h-index: {8})")
                .format(date.today(), nref, nfirst, nsecthr,
                        ncitations, ncitations_first, ncitations_secthr,
                        hindex, hindex_first))
