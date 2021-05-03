@@ -10,6 +10,8 @@ students = [
     "woorak",
     "kado-fong",
     "mao",
+    "moon",
+    "lancaster",
 ]
 
 _JOURNAL_MAP = {
