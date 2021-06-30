@@ -65,6 +65,7 @@ def parse_authors(paper_dict, max_authors=4):
 
     show_authors = raw_authors[:max_authors]
 
+    paper_dict['student'] = False
     if any(['chang-goo' in x.lower() for x in show_authors]):
         # Bold my name because it makes the cut to be shown
         names = []
@@ -76,6 +77,7 @@ def parse_authors(paper_dict, max_authors=4):
                     if stuname in name.lower():
                         name = '\\student{' + name +'}'
                         print(name)
+                        paper_dict['student'] = True
 #            else:
 #                name = format_name(name)
             names.append(name)
@@ -195,9 +197,11 @@ def get_paper_items(papers):
             if myname in paper["authors"][0]:
                 first_refs.append(entry)
             elif (len(paper["authors"]) > 1) and (myname in paper["authors"][1]):
-                    secthr_refs.append(entry)
+                secthr_refs.append(entry)
             #elif (len(paper["authors"]) > 2) and (myname in paper["authors"][2]):
             #        secthr_refs.append(entry)
+            elif paper["student"]:
+                secthr_refs.append(entry)
             else:
                 other_refs.append(entry)
 
