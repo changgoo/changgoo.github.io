@@ -9,6 +9,8 @@ python pubs2tex.py
 # compile CV
 pdflatex -interaction=nonstopmode CV.tex
 pdflatex -interaction=nonstopmode CV.tex
+pdflatex -interaction=nonstopmode CV_short.tex
+pdflatex -interaction=nonstopmode CV_short.tex
 
 # change dir
 cd ../
@@ -17,3 +19,4 @@ cd ../
 DIR=html
 
 cp CV/CV.pdf $DIR/
+cp CV/CV_short.pdf $DIR/
