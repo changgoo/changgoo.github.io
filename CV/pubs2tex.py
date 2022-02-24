@@ -187,6 +187,9 @@ def get_paper_items(papers):
         if paper["citations"] > 1:
             entry += (" [\\href{{{0}}}{{{1} citations}}]"
                       .format(paper["url"], paper["citations"]))
+        # highlight papers (for PU salary review)
+        # if int(paper["year"])>2018:
+        #     entry = "\\highlight{{{0}}}".format(entry)
 
         if is_preprint:
             preprints.append(entry)
@@ -225,8 +228,11 @@ def get_paper_items(papers):
         for i, item in enumerate(corpus):
             #num = len(corpus) - i
             num = nums[j]
-            corpus[i] = ("\\item[{" + #\\color{deemph}\\scriptsize" +
-                         str(num) + ".}]" + item)
+            if item.startswith("\\highlight"):
+                corpus[i] = ("\\item[{\\color{Mahogany}\\bf " +
+                             str(num) + ".}]" + item)
+            else:
+                corpus[i] = ("\\item[{" + str(num) + ".}]" + item)
             j+=1
 
 
