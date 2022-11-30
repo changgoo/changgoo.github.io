@@ -54,7 +54,8 @@
 									<h2>TIGRESS framework</h2>
 									<p>The TIGRESS code is built on the Athena MHD code package with additional physical modules. </p>
                                     <ul class="actions">
-                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary icon solid fa-file-pdf">Paper</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary icon solid fa-file-pdf">TIGRESS</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2022arXiv221113293K/abstract" class="button primary icon solid fa-file-pdf">TIGRESS-NCR</a></li>
                                         <li><a href="methods.html" class="button">Learn more</a></li>
 									</ul>
 								</div>
@@ -65,9 +66,10 @@
 							<div class="content">
 								<div class="inner">
 									<h2>TIGRESS + Radiation/Chemistry</h2>
-									<p>New TIGRESS framework develompent with radiation and chemistry with Jeong-Gyu Kim and Munan Gong</p>
+									<p>TIGRESS-NCR framework with UV radiation transfer and photochemistry module with Jeong-Gyu Kim and Munan Gong</p>
                                     <ul class="actions">
-                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary disabled icon solid fa-file-pdf">Paper</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2022arXiv221113293K/abstract" class="button primary icon solid fa-file-pdf">TIGRESS-NCR</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2022arXiv221008024K/abstract" class="button primary icon solid fa-file-pdf">NCR Method</a></li>
 										<li><a href="methods.html#rc" class="button">Learn more</a></li>
 									</ul>
 								</div>
@@ -94,7 +96,9 @@
 									<h2>TIGRESS + Bar Inflows</h2>
 									<p>TIGRESS extension to galactic center models with bar-driven inflows with Sanghyuk Moon and Woong-Tae Kim</p>
                                     <ul class="actions">
-                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary disabled icon solid fa-file-pdf">Paper</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...914....9M/abstract" class="button primary icon solid fa-file-pdf">Fixed Inflows</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2022ApJ...925...99M/abstract" class="button primary icon solid fa-file-pdf">Varying Inflows</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary disabled icon solid fa-file-pdf">MHD</a></li>
                                         <li><a href="methods.html#bar" class="button">Learn more</a></li>
 									</ul>
 								</div>
@@ -107,7 +111,7 @@
 									<h2>TIGRESS + ICM</h2>
 									<p>TIGRESS extension to model multiphase ISM interacting with ICM winds with Woorak Choi and Aeree Chung</p>
                                     <ul class="actions">
-                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...846..133K/abstract" class="button primary disabled icon solid fa-file-pdf">Paper</a></li>
+                                        <li><a href="https://ui.adsabs.harvard.edu/abs/2022ApJ...936..133C/abstract" class="button primary icon solid fa-file-pdf">Paper</a></li>
                                         <li><a href="methods.html#icm" class="button">Learn more</a></li>
 									</ul>
 								</div>
@@ -169,17 +173,49 @@
                 <!-- SFR -->
 					<section id="SFR" class="wrapper style3 fade-up">
 						<div class="inner">
-							<h2 class='major'>Self-regulation of Star Formation Rates</h2>
-							<p>Star formation rates are self-regulated until star formation feedback modulated pressure provides support against the disk weight. The theory refined with the TIGRESS simulation suite is in preparation (Ostriker &amp; CG Kim).</p>
+							<h2 class='major'>Pressure-Regulated Feedback-Modulated Star Formation Theory</h2>
+<div class="row col-12">
+                                <p><span class="image left"><img src="images/obs_comp.png" alt="" /></span>
+                            The star formation rate (SFR) in galactic disks
+                            depends on both the quantity of available
+                            interstellar medium (ISM) gas and its physical
+                            state.  Conversely, the ISM's physical state
+                            depends on the SFR, because the ``feedback'' energy
+                            and momentum injected by recently-formed massive
+                            stars is crucial to offsetting losses from
+                            turbulent dissipation and radiative cooling.  The
+                            ISM's physical state also responds to the
+                            gravitational field that confines it, with
+                            increased weight driving higher pressure.  In a
+                            quasi-steady state, it is expected 
+                            <b>that the mean
+                            total pressure of different thermal phases will
+                            match each other</b>, 
+                            <b>that the component pressures and
+                            total pressure will satisfy thermal and dynamical
+                            equilibrium requirements</b>, and 
+                            <b>that the SFR will
+                            adjust as needed to provide the requisite stellar
+                            radiation and supernova feedback</b>.  The
+                            pressure-regulated, feedback-modulated (PRFM)
+                            theory of the star-forming ISM formalizes these
+                            ideas, leading to a prediction 
+                            <b>that the SFR per
+                            unit area will scale nearly linearly with
+                            ISM weight</b> (see left). We compare results from
+                        TIGRESS to theory, previous numerical simulations, and
+                        observations, finding excellent agreement.
+                            </p>
 							<div class="features">
                                 <section>
+				    <a href="https://ui.adsabs.harvard.edu/abs/2022ApJ...936..137O/abstract">
                                     <span class="icon major">
                                     <img src="./images/tiger.png" width=60%></span>
-                                    <h3>Standard TIGRESS Suite</h3>
-                                    <p>Ostriker &amp; CG Kim (in prep.)</p>
+                                    <h3>PRFM theory and TIGRESS-classic Suite</h3></a>
+                                    <p>Ostriker &amp; CG Kim</p>
                                 </section>
                                 <section>
-				    <a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...898...35K/abstract">
+				    <a href="methods.html#arm">
                                     <span class="icon solid major fa-fan"></span>
                                     <h3>Spiral Arm Models</h3></a>
                                     <p>WT Kim, CG Kim, Ostriker </p>
@@ -188,22 +224,24 @@
 				    <a href="methods.html#bar">
                                     <span class="icon solid major fa-compact-disc "></span>
                                     <h3>Galactic Center Models</h3></a>
-                                    <p>Moon, WT Kim, CG Kim, Ostriker (in prep.)</p>
+                                    <p>Moon, WT Kim, CG Kim, Ostriker</p>
                                 </section>
+                                    <!--
                                 <section>
 				    <a href="methods.html#icm">
                                     <span class="icon solid major fa-wind"></span>
                                     <h3>Ram Pressure Stripping Models</h3></a>
-                                    <p>Choi, Kim, Chung (in prep.)</p>
+                                    <p>Choi, CG Kim, Chung</p>
                                 </section>
+                                    -->
                                 <section>
 				    <a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...898...52M/abstract">
                                     <span class="icon solid major fa-cloud"></span>
                                     <h3>Cloud scale properties and SFRs</h3></a>
-                                    <p>Mao, Ostriker, Kim</p>
+                                    <p>Mao, Ostriker, CG Kim</p>
                                 </section>
-                                <section></section>
 <!--
+                                <section></section>
                                 <section>
                                     <span class="icon solid major fa-server"></span>
                                     <h3>TIGRESS Papers</h3>
@@ -241,9 +279,11 @@
                                 </section>
 -->
                             </div>
+<!--
 							<ul class="actions">
 								<li><a href="#SFR" class="button">Learn more</a></li>
 							</ul>
+-->
 						</div>
 					</section>
 
@@ -272,33 +312,41 @@
                                 </p>
                             </div>
 -->
+                            <div class="row col-6">
+                               <span class="image fit"><img src="images/dustpol.png" alt="" /></span>
+                            </div>
 							<div class="features">
 								<section>
-									<a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...880..106K/abstract">
 									<span class="icon solid major fa-cloud-meatball"></span>
-									<h3>Dust Polarization</h3></a>
-									<p>Polarized Dust Emission from TIGRESS as CMB foreground templates
-                                    <span class="image fit"><img src="images/dustpol.png" alt="" /></span>
-                                    </p>
+									<h3>Dust Polarization </h3>
+                                    <a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...880..106K/abstract">
+									<li>Polarized Dust Emission Maps from TIGRESS (EE/BB and TE)
+                                    </li></a>
+                                    <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...919...53C/abstract">
+                                        <p>Parity Violation in Polarized Dust Emission (TB and EB)</p>
+                                    </a>
 								</section>
 								<section>
-									<a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...858...16G/abstract">
 									<span class="icon solid major fa-flask"></span>
-									<h3>Post-Processing Molecular Chemistry</h3></a>
-									<p>CO-H2 conversion factor</p>
+									<h3>Post-Processing Molecular Chemistry</h3>
+									<a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...858...16G/abstract">
+									<p>CO-H2 conversion factor in Solar neighborhood</p></a>
+									<a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...903..142G/abstract">
+									<p>Environmental Dependence of the CO-H2 conversion factor</p></a>
 								</section>
 								<section>
-									<a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...897..143K/abstract">
 									<span class="icon solid major fa-radiation"></span>
 									<h3>Post-Processing Ionizing Radiation</h3>
-                                    </a>
+									<a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...897..143K/abstract">
 									<p>Diffuse Ioinized Gas</p>
+                                    </a>
 								</section>
                                					<section>
-									<a href="https://ui.adsabs.harvard.edu/abs/2020ApJS..250....9S/abstract">
 									<span class="icon solid major fa-radiation"></span>
-									<h3>Lyman-Alpha Radiation Trasfer: LaRT</h3></a>
-									<p>Post-processing of TIGRESS snapshots using LaRT to understand the WF effect on HI 21cm line excitation.</p>
+									<h3>Lyman-Alpha Radiation Trasfer: LaRT</h3>
+									<a href="https://ui.adsabs.harvard.edu/abs/2020ApJS..250....9S/abstract">
+									<p>The WF effect on HI 21cm line excitation.</p>
+                                    </a>
 								</section>
 							</div>
 							<ul class="actions">
